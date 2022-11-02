@@ -26,6 +26,7 @@ const addTodo = () => {
 
   input_category.value = null
   input_content.value = ''
+
 }
 
 const removeTodo = (todo) => {
@@ -36,9 +37,11 @@ watch(todos, newVal => {
   localStorage.setItem('todos', JSON.stringify(newVal))
 
 }, {deep: true}) 
+
 watch(name, (newVal) => {
   localStorage.setItem('name', newVal)
 })
+
 
 onMounted(() => {
   name.value =  localStorage.getItem('name') || ''
@@ -97,7 +100,7 @@ onMounted(() => {
       <div class="list">
         <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done' }`">
 
-          <label for="">
+          <label >
             <input type="checkbox" v-model="todo.done">
             <span :class="`bubble ${todo.category}`"></span>
           </label>
